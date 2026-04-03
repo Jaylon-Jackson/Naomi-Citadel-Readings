@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark" />
-  <title>Naomi’s April Citadel Monthly Reading</title>
+  <title>Naomi's April Citadel Monthly Reading</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -22,8 +22,6 @@
       --plum: #34202d;
       --line: rgba(226, 193, 120, 0.24);
       --line-strong: rgba(226, 193, 120, 0.48);
-      --veil: rgba(8, 6, 5, 0.72);
-      --soft: rgba(242, 233, 216, 0.08);
       --shadow: 0 20px 60px rgba(0,0,0,0.38);
       --radius: 24px;
       --radius-sm: 16px;
@@ -34,18 +32,6 @@
       --text-lg: clamp(1.25rem, 1.05rem + 0.8vw, 1.8rem);
       --text-xl: clamp(1.8rem, 1.2rem + 1.8vw, 3rem);
       --text-2xl: clamp(2.6rem, 1.3rem + 4vw, 5rem);
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
-      --space-4: 1rem;
-      --space-5: 1.25rem;
-      --space-6: 1.5rem;
-      --space-8: 2rem;
-      --space-10: 2.5rem;
-      --space-12: 3rem;
-      --space-16: 4rem;
-      --space-20: 5rem;
-      --space-24: 6rem;
       --font-display: 'Cinzel Decorative', Georgia, serif;
       --font-body: 'Cormorant Garamond', Georgia, serif;
       --font-mono: 'DM Mono', monospace;
@@ -53,6 +39,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 20px); }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -68,47 +55,11 @@
       overflow-x: hidden;
     }
 
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    body::before {
-      background:
-        linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E");
-      opacity: 0.24;
-      mix-blend-mode: soft-light;
-    }
-
-    body::after {
-      background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.36) 100%);
-    }
-
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; height: auto; }
     button { font: inherit; }
 
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-    }
-
-    .skip-link:focus {
-      left: 1rem;
-      top: 1rem;
-      z-index: 1000;
-      background: var(--bone);
-      color: var(--ink);
-      padding: 0.75rem 1rem;
-      border-radius: 999px;
-    }
-
+    /* ── STARFIELD ── */
     .starfield {
       position: fixed;
       inset: 0;
@@ -116,7 +67,6 @@
       pointer-events: none;
       overflow: hidden;
     }
-
     .star {
       position: absolute;
       border-radius: 50%;
@@ -125,73 +75,40 @@
       animation: twinkle var(--dur, 7s) ease-in-out infinite;
       opacity: var(--op, 0.5);
     }
-
     @keyframes twinkle {
       0%, 100% { transform: scale(0.8); opacity: calc(var(--op, 0.5) * 0.55); }
       50% { transform: scale(1.25); opacity: var(--op, 0.85); }
     }
 
+    /* ── NAV ── */
     .nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: var(--nav-h);
       z-index: 100;
       backdrop-filter: blur(16px);
       background: linear-gradient(180deg, rgba(11,8,7,0.92), rgba(11,8,7,0.68));
       border-bottom: 1px solid rgba(226, 193, 120, 0.16);
     }
-
     .nav-inner {
       max-width: 1200px;
       margin: 0 auto;
       height: 100%;
-      padding: 0 var(--space-4);
+      padding: 0 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: var(--space-4);
+      gap: 1rem;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      min-width: 0;
-    }
-
+    .brand { display: flex; align-items: center; gap: 0.75rem; }
     .brand-mark {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border-radius: 50%;
       border: 1px solid var(--line-strong);
-      display: grid;
-      place-items: center;
+      display: grid; place-items: center;
       color: var(--gold-light);
-      box-shadow: inset 0 0 18px rgba(226,193,120,0.12), 0 0 18px rgba(185,145,73,0.12);
-      position: relative;
       flex: 0 0 auto;
     }
-
-    .brand-mark::before,
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      border: 1px solid rgba(226,193,120,0.15);
-    }
-
-    .brand-mark::after {
-      inset: -12px;
-      opacity: 0.55;
-    }
-
-    .brand-copy {
-      min-width: 0;
-    }
-
     .brand-copy strong {
       display: block;
       font-family: var(--font-mono);
@@ -199,25 +116,13 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold-light);
-      white-space: nowrap;
     }
-
     .brand-copy span {
       display: block;
       color: var(--parchment);
       font-size: 0.95rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
-
-    .nav-links {
-      display: flex;
-      gap: var(--space-2);
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
+    .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
     .nav-links a {
       font-family: var(--font-mono);
       font-size: var(--text-xs);
@@ -231,26 +136,25 @@
       display: inline-flex;
       align-items: center;
     }
+    .nav-links a:hover { border-color: rgba(226,193,120,0.26); background: rgba(242,233,216,0.04); color: var(--bone); }
 
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      border-color: rgba(226,193,120,0.26);
-      background: rgba(242,233,216,0.04);
-      color: var(--bone);
-      outline: none;
+    /* ── LAYOUT ── */
+    main { position: relative; z-index: 1; }
+    .section {
+      width: min(1100px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: clamp(3.5rem, 8vw, 6rem) 0;
     }
 
-    main { position: relative; z-index: 1; }
-
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: calc(var(--nav-h) + 3rem) 1rem 2.5rem;
       position: relative;
-      padding: calc(var(--nav-h) + var(--space-12)) var(--space-4) var(--space-10);
     }
-
     .hero::before {
       content: "";
       position: absolute;
@@ -260,37 +164,16 @@
       filter: blur(30px);
       pointer-events: none;
     }
-
-    .hero-inner {
-      width: min(1100px, 100%);
-      text-align: center;
-      position: relative;
-    }
-
-    .eyebrow,
-    .utility,
-    .layer-kicker,
-    .caption-bar,
-    .save-label,
-    .pill,
-    .meta-label {
+    .hero-inner { width: min(1100px, 100%); text-align: center; position: relative; }
+    .eyebrow {
       font-family: var(--font-mono);
       text-transform: uppercase;
       letter-spacing: 0.18em;
       font-size: var(--text-xs);
-    }
-
-    .eyebrow {
       color: var(--gold-light);
-      margin-bottom: var(--space-5);
+      margin-bottom: 1.25rem;
     }
-
-    .hero-intro {
-      color: var(--parchment);
-      font-size: var(--text-lg);
-      margin-bottom: var(--space-3);
-    }
-
+    .hero-intro { color: var(--parchment); font-size: var(--text-lg); margin-bottom: 0.75rem; }
     .hero-name {
       font-family: var(--font-display);
       font-size: var(--text-2xl);
@@ -299,41 +182,39 @@
       margin: 0;
       text-shadow: 0 0 24px rgba(226,193,120,0.14);
     }
-
     .hero-subtitle {
-      margin: var(--space-5) auto 0;
+      margin: 1.25rem auto 0;
       color: var(--parchment);
       font-size: clamp(1.15rem, 1rem + 0.45vw, 1.4rem);
       max-width: 30ch;
     }
-
     .hero-meta {
-      margin-top: var(--space-8);
+      margin-top: 2rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: var(--space-2);
+      gap: 0.5rem;
       padding: 0.85rem 1.15rem;
       border: 1px solid var(--line-strong);
       border-radius: 999px;
       background: rgba(255,255,255,0.03);
       color: var(--parchment);
-      box-shadow: inset 0 0 24px rgba(226,193,120,0.06);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
     }
-
     .scroll-cue {
-      margin-top: var(--space-12);
+      margin-top: 3rem;
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--space-3);
+      gap: 0.75rem;
       color: var(--gold-light);
       font-family: var(--font-mono);
       letter-spacing: 0.16em;
       text-transform: uppercase;
       font-size: var(--text-xs);
     }
-
     .scroll-cue::after {
       content: "";
       width: 1px;
@@ -341,33 +222,14 @@
       background: linear-gradient(180deg, rgba(226,193,120,0.85), transparent);
       animation: drift 2.2s ease-in-out infinite;
     }
-
     @keyframes drift {
       0%, 100% { transform: translateY(0); opacity: 0.5; }
       50% { transform: translateY(12px); opacity: 1; }
     }
 
-    .section {
-      width: min(1100px, calc(100% - 2rem));
-      margin: 0 auto;
-      padding: clamp(3.5rem, 8vw, 6rem) 0;
-      content-visibility: auto;
-    }
-
-    .intro-grid {
-      display: grid;
-      gap: var(--space-8);
-      align-items: center;
-    }
-
-    .sigil-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 320px;
-      position: relative;
-    }
-
+    /* ── SIGIL ── */
+    .intro-grid { display: grid; gap: 2rem; align-items: center; }
+    .sigil-wrap { display: flex; align-items: center; justify-content: center; min-height: 320px; position: relative; }
     .sigil {
       width: min(78vw, 320px);
       aspect-ratio: 1;
@@ -379,9 +241,7 @@
       box-shadow: inset 0 0 60px rgba(226,193,120,0.08), 0 0 40px rgba(185,145,73,0.08);
       background: radial-gradient(circle, rgba(185,145,73,0.1), rgba(18,14,12,0.25) 55%, transparent 72%);
     }
-
-    .sigil::before,
-    .sigil::after {
+    .sigil::before, .sigil::after {
       content: "";
       position: absolute;
       inset: 18px;
@@ -389,89 +249,56 @@
       border: 1px solid rgba(226,193,120,0.14);
       animation: spin 18s linear infinite;
     }
-
-    .sigil::after {
-      inset: -12px;
-      border-style: dashed;
-      animation-direction: reverse;
-      animation-duration: 26s;
-      opacity: 0.65;
-    }
-
+    .sigil::after { inset: -12px; border-style: dashed; animation-direction: reverse; animation-duration: 26s; opacity: 0.65; }
     .sigil-core {
-      width: 108px;
-      height: 108px;
+      width: 108px; height: 108px;
       border-radius: 50%;
       border: 1px solid rgba(226,193,120,0.44);
-      display: grid;
-      place-items: center;
+      display: grid; place-items: center;
       color: var(--gold-light);
       font-family: var(--font-display);
       font-size: 2.75rem;
       background: radial-gradient(circle, rgba(226,193,120,0.14), rgba(18,14,12,0.9));
-      box-shadow: 0 0 28px rgba(226,193,120,0.12);
     }
-
-    .orbit,
-    .orbit-two {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      pointer-events: none;
+    .orbit, .orbit-two {
+      position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
     }
-
-    .orbit::before,
-    .orbit-two::before {
+    .orbit::before, .orbit-two::before {
       content: "✦";
       position: absolute;
       color: rgba(226,193,120,0.8);
       font-size: 0.9rem;
-      top: -5px;
-      left: 50%;
+      top: -5px; left: 50%;
       transform: translateX(-50%);
-      text-shadow: 0 0 10px rgba(226,193,120,0.35);
     }
-
     .orbit { animation: spin 20s linear infinite; }
     .orbit-two { animation: spin 28s linear infinite reverse; transform: scale(0.84); }
-
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    .intro-copy h2,
-    .before-card h2,
-    .note-card h2 {
+    /* ── TYPOGRAPHY ── */
+    .utility, .layer-kicker, .caption-bar, .save-label, .meta-label {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: var(--text-xs);
+    }
+    .utility { color: var(--gold-light); margin-bottom: 1rem; }
+
+    .intro-copy h2, .before-card h2, .note-card h2 {
       font-family: var(--font-display);
       font-size: clamp(2rem, 1.3rem + 2vw, 3rem);
-      margin: 0 0 var(--space-3);
+      margin: 0 0 0.75rem;
       color: var(--bone);
     }
-
-    .utility {
-      color: var(--gold-light);
-      margin-bottom: var(--space-4);
-    }
-
-    .intro-copy p,
-    .before-card p,
-    .reading-block p,
-    .synthesis-block p,
-    .note-card p,
-    .kipper-copy p {
-      margin: 0 0 var(--space-4);
+    .intro-copy p, .before-card p, .reading-block p,
+    .synthesis-block p, .note-card p, .kipper-copy p {
+      margin: 0 0 1rem;
       color: var(--parchment);
       font-size: clamp(1.12rem, 1.02rem + 0.25vw, 1.28rem);
     }
 
-    .deck-badges,
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-3);
-      margin-top: var(--space-5);
-    }
-
-    .badge,
-    .tag {
+    .deck-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+    .badge {
       font-family: var(--font-mono);
       font-size: var(--text-xs);
       letter-spacing: 0.14em;
@@ -486,83 +313,32 @@
       background: rgba(255,255,255,0.025);
     }
 
-    .before-card,
-    .framed,
-    .reading-block,
-    .grid-logic,
-    .pairings,
-    .kipper-box,
-    .kipper-copy,
-    .inner-grid-box,
-    .card-grid,
-    .convergence,
-    .synthesis-block,
-    .note-card,
-    .save-banner,
-    .footer-shell {
+    /* ── CARDS / BLOCKS ── */
+    .before-card, .framed, .reading-block, .grid-logic, .pairings,
+    .kipper-box, .kipper-copy, .inner-grid-box, .convergence,
+    .synthesis-block, .note-card, .save-banner, .footer-shell {
       position: relative;
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
-    }
-
-    .before-card,
-    .note-card,
-    .save-banner,
-    .footer-shell,
-    .kipper-copy,
-    .convergence,
-    .inner-grid-box,
-    .kipper-box,
-    .framed,
-    .pairings,
-    .grid-logic,
-    .reading-block,
-    .synthesis-block {
       padding: clamp(1.4rem, 2vw, 2rem);
     }
-
-    .before-card::before,
-    .framed::before,
-    .reading-block::before,
-    .grid-logic::before,
-    .pairings::before,
-    .kipper-box::before,
-    .kipper-copy::before,
-    .inner-grid-box::before,
-    .card-grid::before,
-    .convergence::before,
-    .synthesis-block::before,
-    .note-card::before,
-    .save-banner::before,
-    .footer-shell::before {
+    .before-card::before, .framed::before, .reading-block::before, .grid-logic::before,
+    .pairings::before, .kipper-box::before, .kipper-copy::before, .inner-grid-box::before,
+    .convergence::before, .synthesis-block::before, .note-card::before,
+    .save-banner::before, .footer-shell::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(226,193,120,0.8), transparent);
     }
 
-    .section-header {
-      margin-bottom: var(--space-8);
-      display: grid;
-      gap: var(--space-3);
-    }
-
-    .layer-kicker {
-      color: var(--gold-light);
-    }
-
-    .layer-title {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-
+    /* ── SECTION HEADERS ── */
+    .section-header { margin-bottom: 2rem; display: grid; gap: 0.75rem; }
+    .layer-kicker { color: var(--gold-light); }
     .layer-title h2 {
       margin: 0;
       font-family: var(--font-display);
@@ -570,15 +346,11 @@
       color: var(--bone);
       line-height: 1.02;
     }
+    .layer-title p { margin: 0; color: var(--parchment); font-size: var(--text-lg); }
 
-    .layer-title p {
-      margin: 0;
-      color: var(--parchment);
-      font-size: var(--text-lg);
-    }
-
+    /* ── SPREAD FIGURES ── */
     figure.spread {
-      margin: 0 0 var(--space-8);
+      margin: 0 0 2rem;
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--line-strong);
@@ -587,144 +359,80 @@
       background: #0c0907;
       cursor: zoom-in;
     }
-
     figure.spread::after {
       content: "";
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.3) 65%, rgba(0,0,0,0.6));
       pointer-events: none;
     }
-
     .spread img {
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
       filter: saturate(0.96) contrast(1.02);
     }
-
     .caption-bar {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      left: 0; right: 0; bottom: 0;
       z-index: 2;
       padding: 1rem 1.2rem;
       color: var(--bone);
       background: linear-gradient(180deg, transparent, rgba(10,8,7,0.88));
     }
 
-    .framed-title,
-    .reading-block h3,
-    .grid-logic h3,
-    .pairings h3,
-    .kipper-copy h3,
-    .inner-grid-box h3,
-    .convergence h3,
-    .synthesis-block h3 {
-      margin: 0 0 var(--space-3);
+    /* ── CONTENT ELEMENTS ── */
+    .framed-title, .reading-block h3, .grid-logic h3, .pairings h3,
+    .kipper-copy h3, .inner-grid-box h3, .convergence h3, .synthesis-block h3 {
+      margin: 0 0 0.75rem;
       font-family: var(--font-display);
       font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.9rem);
       line-height: 1.12;
       color: var(--bone);
     }
-
-    .overview-list,
-    .kipper-layout,
-    .pairing-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: var(--space-3);
+    .overview-list, .kipper-layout, .pairing-list {
+      margin: 0; padding: 0; list-style: none;
+      display: grid; gap: 0.75rem;
       color: var(--parchment);
       font-size: clamp(1.05rem, 0.98rem + 0.2vw, 1.2rem);
     }
-
-    .overview-list li,
-    .kipper-layout li,
-    .pairing-list li {
-      padding-bottom: var(--space-3);
+    .overview-list li, .kipper-layout li, .pairing-list li {
+      padding-bottom: 0.75rem;
       border-bottom: 1px solid rgba(226,193,120,0.1);
     }
-
-    .overview-list li:last-child,
-    .kipper-layout li:last-child,
-    .pairing-list li:last-child { border-bottom: 0; padding-bottom: 0; }
-
-    .section-stack {
-      display: grid;
-      gap: var(--space-6);
+    .overview-list li:last-child, .kipper-layout li:last-child, .pairing-list li:last-child {
+      border-bottom: 0; padding-bottom: 0;
     }
-
+    .section-stack { display: grid; gap: 1.5rem; }
     .tagline {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: var(--space-3);
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 0.75rem;
       color: var(--gold-light);
       font-family: var(--font-mono);
       font-size: var(--text-xs);
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
+    .tagline::before { content: ""; width: 22px; height: 1px; background: rgba(226,193,120,0.72); }
+    .grid-two { display: grid; gap: 1.5rem; }
 
-    .tagline::before {
-      content: "";
-      width: 22px;
-      height: 1px;
-      background: rgba(226,193,120,0.72);
-    }
-
-    .grid-two {
-      display: grid;
-      gap: var(--space-6);
-    }
-
-    .pairing-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: clamp(1rem, 0.97rem + 0.18vw, 1.15rem);
-    }
-
+    .pairing-table { width: 100%; border-collapse: collapse; font-size: clamp(1rem, 0.97rem + 0.18vw, 1.15rem); }
     .pairing-table tr + tr td { border-top: 1px solid rgba(226,193,120,0.1); }
-    .pairing-table td {
-      padding: 0.95rem 0;
-      vertical-align: top;
-      color: var(--parchment);
-    }
-    .pairing-table td:first-child {
-      color: var(--bone);
-      width: 44%;
-      padding-right: 1rem;
-    }
+    .pairing-table td { padding: 0.95rem 0; vertical-align: top; color: var(--parchment); }
+    .pairing-table td:first-child { color: var(--bone); width: 44%; padding-right: 1rem; }
 
     .inner-cards {
       display: grid;
-      gap: var(--space-4);
+      gap: 1rem;
       grid-template-columns: repeat(1, minmax(0, 1fr));
     }
-
     .mini-card {
       border: 1px solid rgba(226,193,120,0.16);
       border-radius: var(--radius-sm);
       padding: 1rem;
       background: rgba(255,255,255,0.02);
-      min-height: 100%;
     }
-
-    .mini-card .meta-label {
-      color: var(--gold-light);
-      display: block;
-      margin-bottom: 0.55rem;
-    }
-
-    .mini-card strong {
-      display: block;
-      font-size: 1.2rem;
-      color: var(--bone);
-      line-height: 1.25;
-    }
+    .mini-card .meta-label { color: var(--gold-light); display: block; margin-bottom: 0.55rem; }
+    .mini-card strong { display: block; font-size: 1.2rem; color: var(--bone); line-height: 1.25; }
 
     .highlight-statement {
       padding: 1.2rem 1.25rem;
@@ -735,29 +443,17 @@
       color: var(--bone);
     }
 
+    /* ── SAVE BANNER ── */
     .save-banner {
       display: flex;
       flex-direction: column;
-      gap: var(--space-5);
+      gap: 1.25rem;
       align-items: flex-start;
-      background:
-        linear-gradient(135deg, rgba(185,145,73,0.1), rgba(52,32,45,0.18)),
-        rgba(255,255,255,0.025);
+      background: linear-gradient(135deg, rgba(185,145,73,0.1), rgba(52,32,45,0.18)), rgba(255,255,255,0.025);
     }
-
     .save-label { color: var(--gold-light); }
-    .save-banner h2 {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 1.2rem + 1.5vw, 2.7rem);
-    }
-
-    .save-banner p {
-      margin: 0;
-      color: var(--parchment);
-      font-size: clamp(1.08rem, 1rem + 0.25vw, 1.2rem);
-    }
-
+    .save-banner h2 { margin: 0; font-family: var(--font-display); font-size: clamp(1.8rem, 1.2rem + 1.5vw, 2.7rem); }
+    .save-banner p { margin: 0; color: var(--parchment); font-size: clamp(1.08rem, 1rem + 0.25vw, 1.2rem); }
     .save-btn {
       min-height: 48px;
       padding: 0.9rem 1.2rem;
@@ -771,51 +467,22 @@
       cursor: pointer;
       box-shadow: 0 14px 34px rgba(185,145,73,0.22);
     }
+    .save-btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
 
-    .save-btn:hover,
-    .save-btn:focus-visible {
-      filter: brightness(1.05);
-      transform: translateY(-1px);
-      outline: none;
-    }
+    footer.section { padding-top: 0; padding-bottom: 2.5rem; }
+    .footer-shell { text-align: center; color: var(--parchment); font-size: clamp(1rem, 0.95rem + 0.2vw, 1.12rem); }
 
-    footer.section {
-      padding-top: 0;
-      padding-bottom: var(--space-10);
-    }
-
-    .footer-shell {
-      text-align: center;
-      color: var(--parchment);
-      font-size: clamp(1rem, 0.95rem + 0.2vw, 1.12rem);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(34px);
-      transition: opacity 900ms ease, transform 900ms ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    /* ── ZOOM OVERLAY ── */
     .zoom-overlay {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
+      position: fixed; inset: 0;
+      display: none; align-items: center; justify-content: center;
       padding: 1rem;
       background: rgba(6, 4, 3, 0.88);
       backdrop-filter: blur(10px);
       z-index: 300;
       cursor: zoom-out;
     }
-
     .zoom-overlay.active { display: flex; }
-
     .zoom-overlay img {
       max-width: min(96vw, 1400px);
       max-height: 90vh;
@@ -825,11 +492,9 @@
       object-fit: contain;
       background: #0b0907;
     }
-
     .zoom-note {
       position: absolute;
-      left: 50%;
-      bottom: 1.2rem;
+      left: 50%; bottom: 1.2rem;
       transform: translateX(-50%);
       font-family: var(--font-mono);
       font-size: var(--text-xs);
@@ -842,87 +507,35 @@
       padding: 0.7rem 1rem;
     }
 
+    /* ── RESPONSIVE ── */
     @media (min-width: 760px) {
-      .intro-grid,
-      .grid-two {
-        grid-template-columns: 1fr 1.15fr;
-      }
-
-      .section-header {
-        grid-template-columns: 110px 1fr;
-        align-items: end;
-      }
-
-      .layer-kicker {
-        padding-top: 0.35rem;
-      }
-
-      .save-banner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .inner-cards {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-      }
+      .intro-grid, .grid-two { grid-template-columns: 1fr 1.15fr; }
+      .section-header { grid-template-columns: 110px 1fr; align-items: end; }
+      .layer-kicker { padding-top: 0.35rem; }
+      .save-banner { flex-direction: row; align-items: center; justify-content: space-between; }
+      .inner-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); }
     }
-
     @media (max-width: 759px) {
       .nav { height: auto; }
       .nav-inner {
         min-height: var(--nav-h);
-        padding-top: 0.7rem;
-        padding-bottom: 0.7rem;
-        flex-direction: column;
-        align-items: stretch;
+        padding-top: 0.7rem; padding-bottom: 0.7rem;
+        flex-direction: column; align-items: stretch;
       }
-
       .brand { justify-content: center; }
       .nav-links { justify-content: center; }
-
-      .hero {
-        padding-top: calc(var(--nav-h) + 4.6rem);
-      }
-
-      .hero-meta {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      .pairing-table td,
-      .pairing-table tr,
-      .pairing-table tbody {
-        display: block;
-        width: 100%;
-      }
-
-      .pairing-table td:first-child {
-        width: 100%;
-        padding-bottom: 0.2rem;
-      }
-
-      .pairing-table td:last-child {
-        padding-top: 0;
-      }
+      .hero { padding-top: calc(var(--nav-h) + 4.6rem); }
+      .pairing-table td, .pairing-table tr, .pairing-table tbody { display: block; width: 100%; }
+      .pairing-table td:first-child { width: 100%; padding-bottom: 0.2rem; }
+      .pairing-table td:last-child { padding-top: 0; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .star,
-      .scroll-cue::after,
-      .sigil::before,
-      .sigil::after,
-      .orbit,
-      .orbit-two {
-        animation: none !important;
-      }
-      .reveal { opacity: 1; transform: none; transition: none; }
+      .star, .scroll-cue::after, .sigil::before, .sigil::after, .orbit, .orbit-two { animation: none !important; }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
   <div class="starfield" aria-hidden="true" id="starfield"></div>
 
   <header class="nav">
@@ -944,18 +557,21 @@
   </header>
 
   <main id="main">
-    <section class="hero reveal">
+
+    <!-- HERO -->
+    <section class="hero">
       <div class="hero-inner">
         <div class="eyebrow">Your April Month-Ahead Reading</div>
         <div class="hero-intro">prepared with care for</div>
         <h1 class="hero-name">Naomi</h1>
         <p class="hero-subtitle">The Citadel Monthly · Four Deck Reading · April 2026</p>
-        <div class="hero-meta pill">April 2, 2026 · Prepared by Jaylon</div>
+        <div class="hero-meta">April 2, 2026 · Prepared by Jaylon</div>
         <a class="scroll-cue" href="#reader-intro">Read On</a>
       </div>
     </section>
 
-    <section class="section reveal" id="reader-intro">
+    <!-- ABOUT JAYLON -->
+    <section class="section" id="reader-intro">
       <div class="intro-grid">
         <div class="sigil-wrap">
           <div class="sigil" aria-hidden="true">
@@ -968,8 +584,8 @@
           <h2>Jaylon</h2>
           <div class="utility">Oracle · Lenormand · Kipper · Tarot</div>
           <p>I read cards in networks, not just pairs. Each deck does a different job, and the real reading lives in the conversation between them. I will tell you what I see, and I trust you to know which door it is pointing at.</p>
-          <p>We don’t lie to kick it over here. The difficult cards get the same respect as the good ones, because that is the only way any of this is actually useful to you.</p>
-          <div class="deck-badges" aria-label="Deck badges">
+          <p>We don't lie to kick it over here. The difficult cards get the same respect as the good ones, because that is the only way any of this is actually useful to you.</p>
+          <div class="deck-badges">
             <span class="badge">Lenormand</span>
             <span class="badge">Kipper</span>
             <span class="badge">Tarot</span>
@@ -979,30 +595,32 @@
       </div>
     </section>
 
-    <section class="section reveal">
+    <!-- BEFORE WE BEGIN -->
+    <section class="section">
       <div class="before-card">
         <h2>Before We Begin</h2>
         <p>This reading uses four separate decks, each pulled and read on their own before they are brought into conversation. The Lenormand and Kipper map the external reality of your month — the events, the people, the conditions, what is moving and what is not. The Tarot and Oracle speak to the inner landscape: what you are being asked to embody, what needs to be released, what your soul already knows about this season.</p>
-        <p>You will recognize yourself in the Tarot and Oracle cards in ways I cannot fully predict, because those cards speak your language more than mine. I will give you the card’s identity and then what I see it doing in your reading. What it actually means in your life, you will know. That is the point.</p>
+        <p>You will recognize yourself in the Tarot and Oracle cards in ways I cannot fully predict, because those cards speak your language more than mine. I will give you the card's identity and then what I see it doing in your reading. What it actually means in your life, you will know. That is the point.</p>
       </div>
     </section>
 
-    <section class="section reveal" id="lenormand">
+    <!-- LENORMAND -->
+    <section class="section" id="lenormand">
       <div class="section-header">
         <div class="layer-kicker">I</div>
         <div class="layer-title">
           <h2>The Lenormand</h2>
-          <p>External Reality · The Month’s Terrain</p>
+          <p>External Reality · The Month's Terrain</p>
         </div>
       </div>
 
       <figure class="spread zoomable" data-zoom-src="Naomi_April_Lenormand.jpg">
-        <img src="Naomi_April_Lenormand.jpg" alt="Naomi’s April Lenormand spread laid out on a dark reading surface" width="1600" height="1200" loading="lazy" />
+        <img src="Naomi_April_Lenormand.jpg" alt="Naomi's April Lenormand spread" width="1600" height="1200" loading="lazy" />
         <figcaption class="caption-bar">Lenormand spread · External terrain</figcaption>
       </figure>
 
-      <div class="framed">
-        <h3 class="framed-title">The Witch’s Tableau · 16 Cards</h3>
+      <div class="framed" style="margin-bottom: 1.5rem;">
+        <h3 class="framed-title">The Witch's Tableau · 16 Cards</h3>
         <ul class="overview-list">
           <li>Q1 — Recent Past · Conscious: Fish · Birds · Clover · Dog</li>
           <li>Q2 — Recent Past · Hidden: Clouds · Crossroads · Moon · Fox</li>
@@ -1011,12 +629,12 @@
         </ul>
       </div>
 
-      <div class="section-stack" style="margin-top: var(--space-6);">
+      <div class="section-stack">
         <article class="reading-block">
           <div class="tagline">Lenormand</div>
           <h3>Q1 — Recent Past · Conscious</h3>
           <p>Fish into Birds reads as financial conversation: money discussed, negotiated, worried over, and circulated rather than sitting in silent abundance. Clover and Dog then complete that conscious past with a brief but genuine lucky break alongside someone loyal and reliably present.</p>
-          <p>Within the quadrant, Fish + Clover suggests a real financial opening, Birds + Dog points to important conversations with a trusted person, Fish + Dog speaks to loyalty in a resource situation, and Birds + Clover softens the chatter into good or welcome news. The overall story is that Naomi already knows the recent past held money talk, a short-lived bright patch, and real support.</p>
+          <p>Within the quadrant, Fish + Clover suggests a real financial opening, Birds + Dog points to important conversations with a trusted person, Fish + Dog speaks to loyalty in a resource situation, and Birds + Clover softens the chatter into good or welcome news. The overall story is that you already know the recent past held money talk, a short-lived bright patch, and real support.</p>
         </article>
 
         <article class="reading-block">
@@ -1027,22 +645,22 @@
 
         <article class="reading-block">
           <h3>Q3 — Near Future · Conscious</h3>
-          <p>Ship moving into Tower says Naomi is already in motion toward something formal, structured, established, or institutionally significant. Woman and Stork facing one another make the near future especially clear: she and change are in direct dialogue, and she already knows it is approaching.</p>
-          <p>Ship + Woman reads as Naomi herself launching into movement, Tower + Stork as positive change through an established structure, Ship + Stork as a journey that carries improvement, and Tower + Woman as her movement toward more authority, containment, or formal positioning. This quadrant reads as conscious movement toward a more defined future.</p>
+          <p>Ship moving into Tower says you are already in motion toward something formal, structured, established, or institutionally significant. Woman and Stork facing one another make the near future especially clear: you and change are in direct dialogue, and you already know it is approaching.</p>
+          <p>Ship + Woman reads as you yourself launching into movement, Tower + Stork as positive change through an established structure, Ship + Stork as a journey that carries improvement, and Tower + Woman as your movement toward more authority, containment, or formal positioning. This quadrant reads as conscious movement toward a more defined future.</p>
         </article>
 
         <article class="reading-block">
           <h3>Q4 — Near Future · Hidden</h3>
           <p>Stars and Sun together in the hidden future create one of the strongest positive undercurrents in the whole tableau: clarity, hope, success, and real brightness operating below the surface. Bear and Scythe complicate that promise by showing power, money, or authority tied to a decisive cut that may not be consciously anticipated.</p>
-          <p>Stars + Sun suggests extraordinary positive convergence, Bear + Scythe points to a sharp move by a powerful or financial force, Stars + Scythe becomes clarity that cuts, and Sun + Bear shows success involving authority or resources. The hidden future therefore holds both Naomi’s strongest success pattern and a severance that arrives with force.</p>
+          <p>Stars + Sun suggests extraordinary positive convergence, Bear + Scythe points to a sharp move by a powerful or financial force, Stars + Scythe becomes clarity that cuts, and Sun + Bear shows success involving authority or resources. The hidden future therefore holds both your strongest success pattern and a severance that arrives with force.</p>
         </article>
 
         <div class="grid-two">
           <section class="grid-logic">
             <h3>Grid Logic</h3>
-            <p>Row 1 is the visible conscious story: Fish · Birds · Ship · Tower — money talk moving toward structure. Row 2 is the intimate human experience: Clover · Dog · Woman · Stork — luck, support, Naomi herself, and positive change. Row 3 moves from confusion into guidance and authority, while Row 4 hides Moon · Fox · Sun · Scythe — feeling, strategy, success, and a decisive ending beneath awareness.</p>
-            <p>Column 3 is the spine: Ship · Woman · Stars · Sun, the most positive line in the spread and the one that runs directly through Naomi. Column 4 — Tower · Stork · Bear · Scythe — suggests a structured change that culminates in authority and a clean cut, most likely at the far edge of the month.</p>
-            <p>The main diagonal, Fish · Dog · Stars · Scythe, reads as financial loyalty moving through clarity into severance. The counter diagonal, Tower · Woman · Crossroads · Moon, shows Naomi moving through structure into a choice with deep emotional current beneath it.</p>
+            <p>Row 1 is the visible conscious story: Fish · Birds · Ship · Tower — money talk moving toward structure. Row 2 is the intimate human experience: Clover · Dog · Woman · Stork — luck, support, you yourself, and positive change. Row 3 moves from confusion into guidance and authority, while Row 4 hides Moon · Fox · Sun · Scythe — feeling, strategy, success, and a decisive ending beneath awareness.</p>
+            <p>Column 3 is the spine: Ship · Woman · Stars · Sun, the most positive line in the spread and the one that runs directly through you. Column 4 — Tower · Stork · Bear · Scythe — suggests a structured change that culminates in authority and a clean cut, most likely at the far edge of the month.</p>
+            <p>The main diagonal, Fish · Dog · Stars · Scythe, reads as financial loyalty moving through clarity into severance. The counter diagonal, Tower · Woman · Crossroads · Moon, shows you moving through structure into a choice with deep emotional current beneath it.</p>
           </section>
 
           <section class="pairings">
@@ -1062,7 +680,8 @@
       </div>
     </section>
 
-    <section class="section reveal" id="kipper">
+    <!-- KIPPER -->
+    <section class="section" id="kipper">
       <div class="section-header">
         <div class="layer-kicker">II</div>
         <div class="layer-title">
@@ -1072,7 +691,7 @@
       </div>
 
       <figure class="spread zoomable" data-zoom-src="Naomi_Kipper_April.jpg">
-        <img src="Naomi_Kipper_April.jpg" alt="Naomi’s April Kipper spread laid out for directional reading" width="1600" height="1200" loading="lazy" />
+        <img src="Naomi_Kipper_April.jpg" alt="Naomi's April Kipper spread" width="1600" height="1200" loading="lazy" />
         <figcaption class="caption-bar">Kipper spread · People and positions</figcaption>
       </figure>
 
@@ -1089,19 +708,19 @@
         </div>
 
         <div class="kipper-copy">
-          <p>Siren 2 is Naomi’s significator and is facing right, which means what lies to her right is behind her and what lies to her left is ahead of her according to the spread guide’s emphasis on Kipper directionality. That makes High Honours the conscious aspiration above her, Gift something already received or moving away, Change the thing she is actively facing into, and Sorrows the unconscious burden that is already oriented toward Great Fortune.</p>
-          <p>The top row connects private immediacy, recognition, and a younger man; the middle row is Naomi’s own line from what she has received into what she is changing into; and the bottom row becomes the emotional spine of the reading because Endings and Sorrows both funnel toward Great Fortune. The overall box is therefore highly positive even while still acknowledging grief and closure.</p>
+          <p>Siren 2 is your significator and is facing right, which means what lies to your right is behind you and what lies to your left is ahead of you. That makes High Honours the conscious aspiration above you, Gift something already received or moving away, Change the thing you are actively facing into, and Sorrows the unconscious burden that is already oriented toward Great Fortune.</p>
+          <p>The top row connects private immediacy, recognition, and a younger man; the middle row is your own line from what you have received into what you are changing into; and the bottom row becomes the emotional spine of the reading because Endings and Sorrows both funnel toward Great Fortune. The overall box is therefore highly positive even while still acknowledging grief and closure.</p>
         </div>
 
         <div class="section-stack">
           <article class="reading-block">
-            <h3>Where Her Eyes Are — High Honours</h3>
-            <p>High Honours is the conscious aspiration here, the elevated outcome Naomi can already sense at the level of status, recognition, or being properly acknowledged. In this spread it does not feel abstract; it feels like the visible crest she is oriented toward.</p>
+            <h3>Where Your Eyes Are — High Honours</h3>
+            <p>High Honours is the conscious aspiration here, the elevated outcome you can already sense at the level of status, recognition, or being properly acknowledged. In this spread it does not feel abstract; it feels like the visible crest you are oriented toward.</p>
           </article>
 
           <article class="reading-block">
             <h3>Ahead — Gift</h3>
-            <p>Gift reads as something already given or moving away depending on orientation, which gives this position a subtle bittersweet quality. It still belongs to Naomi’s line, but the directional logic says it may be better understood as something received, spent, or already passing out of the center of the story.</p>
+            <p>Gift reads as something already given or moving away depending on orientation, which gives this position a subtle bittersweet quality. It still belongs to your line, but the directional logic says it may be better understood as something received, spent, or already passing out of the center of the story.</p>
           </article>
 
           <article class="reading-block">
@@ -1111,23 +730,24 @@
 
           <article class="reading-block">
             <h3>Above — Parlour · High Honours · Rich Gent</h3>
-            <p>This upper line feels social, visible, and relational. Rich Gent connects to a polished or resource-bearing masculine figure, which makes the atmosphere above Naomi feel tied to recognition, presentation, and a person who carries either resources, polish, or influence into the picture.</p>
+            <p>This upper line feels social, visible, and relational. Rich Gent connects to a polished or resource-bearing masculine figure, which makes the atmosphere above you feel tied to recognition, presentation, and a person who carries either resources, polish, or influence into the picture.</p>
           </article>
 
           <article class="reading-block">
             <h3>Behind — Change</h3>
-            <p>Change shows Naomi is emerging from transformation rather than standing outside it. The people layer in this spread is directional and relational, not abstract, so this card reads less like theory and more like lived motion already in progress around her body and position.</p>
+            <p>Change shows you are emerging from transformation rather than standing outside it. The people layer in this spread is directional and relational, not abstract, so this card reads less like theory and more like lived motion already in progress around your body and position.</p>
           </article>
 
           <article class="reading-block">
             <h3>Cross-Deck Link</h3>
-            <p>The Kipper box becomes sharper when read beside the other decks: recognition above, grief below, and a polished masculine figure in the upper field all echo the month’s larger pattern of movement, caution, and consequential advancement. The people layer is therefore not separate from the Lenormand or Oracle messages; it gives them a face and a direction.</p>
+            <p>The Kipper box becomes sharper when read beside the other decks: recognition above, grief below, and a polished masculine figure in the upper field all echo the month's larger pattern of movement, caution, and consequential advancement. The people layer is therefore not separate from the Lenormand or Oracle messages; it gives them a face and a direction.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="inner">
+    <!-- TAROT & ORACLE -->
+    <section class="section" id="inner">
       <div class="section-header">
         <div class="layer-kicker">III</div>
         <div class="layer-title">
@@ -1137,7 +757,7 @@
       </div>
 
       <figure class="spread zoomable" data-zoom-src="Naomi_Tarot_Oracle_April.jpg">
-        <img src="Naomi_Tarot_Oracle_April.jpg" alt="Naomi’s Tarot and Oracle cards for April arranged together" width="1600" height="1200" loading="lazy" />
+        <img src="Naomi_Tarot_Oracle_April.jpg" alt="Naomi's Tarot and Oracle cards for April" width="1600" height="1200" loading="lazy" />
         <figcaption class="caption-bar">Tarot and Oracle · Inner landscape</figcaption>
       </figure>
 
@@ -1154,39 +774,39 @@
         </div>
 
         <article class="reading-block">
-          <h3>T1</h3>
-          <p>Knight of Pentacles reversed reads as the shadow of grinding without reassessing: persistence that has turned into rut, stubborn material effort, and the temptation to answer imbalance by doubling down on the same method.</p>
-          <p>Together these cards do not condemn Naomi’s goals; they critique the operating method. The message is that the month asks her to release the habit of trying to muscle through misalignment by working harder and forcing equilibrium faster.</p>
+          <h3>T1 — Knight of Pentacles Reversed</h3>
+          <p>Knight of Pentacles reversed reads as the shadow of grinding without reassessing: persistence that has turned into rut, stubborn material effort, and the temptation to answer imbalance by doubling down on the same method. Together these cards do not condemn your goals; they critique the operating method. The message is that the month asks you to release the habit of trying to muscle through misalignment by working harder and forcing equilibrium faster.</p>
         </article>
 
         <article class="reading-block">
-          <h3>T2</h3>
+          <h3>T2 — Temperance Reversed</h3>
           <p>Temperance reversed intensifies that message by showing forced balance, overcorrection, impatience, and a healing process being pushed past its real rhythm.</p>
         </article>
 
         <article class="reading-block">
-          <h3>O1</h3>
-          <p><strong>The Astronomer</strong> as Lesson says the map for this month is not primarily practical or historical; it comes through intuition, discovery, and a willingness to look beyond old frameworks.</p>
+          <h3>O1 — The Astronomer</h3>
+          <p><strong>The Astronomer</strong> as Lesson says the map for this month is not primarily practical or historical; it comes through intuition, discovery, and a willingness to look beyond old frameworks. Zoom out. The situation looks different from a greater distance than it does from inside it.</p>
         </article>
 
         <article class="reading-block">
-          <h3>O2</h3>
-          <p><strong>The Patron reversed</strong> as Guidance warns that a mentor-like or polished figure may not be giving as much as he appears to promise. Because the guide explicitly notes that Guidance often connects to a Kipper person or Lenormand event, the cross-link to Rich Gent and Tower + Fox becomes especially potent here.</p>
+          <h3>O2 — The Patron Reversed</h3>
+          <p><strong>The Patron reversed</strong> as Guidance warns that a mentor-like or polished figure may not be giving as much as he appears to promise. The cross-link to Rich Gent in the Kipper and Tower + Fox in the Lenormand becomes especially potent here — the same energy is showing up in all three systems.</p>
         </article>
 
         <article class="reading-block">
-          <h3>O3</h3>
-          <p><strong>The Waker reversed</strong> as Undercurrent reframes everything: too much external focus, neglected interior signals, and the need to ask honestly how Naomi feels and what those feelings are sourced from.</p>
+          <h3>O3 — The Waker Reversed</h3>
+          <p><strong>The Waker reversed</strong> as Undercurrent reframes everything: too much external focus, neglected interior signals, and the need to ask honestly how you feel and what those feelings are sourced from. The alarm is going off. Don't hit snooze.</p>
         </article>
 
         <div class="convergence">
           <h3>Convergence</h3>
-          <p>The month wants to hand Naomi something brighter than her current operating method knows how to receive.</p>
+          <p>The month wants to hand you something brighter than your current operating method knows how to receive.</p>
         </div>
       </div>
     </section>
 
-    <section class="section reveal" id="synthesis">
+    <!-- SYNTHESIS -->
+    <section class="section" id="synthesis">
       <div class="section-header">
         <div class="layer-kicker">IV</div>
         <div class="layer-title">
@@ -1203,17 +823,17 @@
 
         <article class="synthesis-block">
           <h3>What the Inner Map Says</h3>
-          <p>Internally, the cards show a mismatch between April’s opportunity and Naomi’s current method. The shadow cards say stop grinding and stop forcing balance, the Astronomer says intuition must outrank old logic, the Patron reversed warns against overvaluing a persuasive guide, and the Waker reversed insists the real blind spot is inside rather than outside.</p>
+          <p>Internally, the cards show a mismatch between April's opportunity and your current method. The shadow cards say stop grinding and stop forcing balance, the Astronomer says intuition must outrank old logic, the Patron reversed warns against overvaluing a persuasive guide, and the Waker reversed insists the real blind spot is inside rather than outside.</p>
         </article>
 
         <article class="synthesis-block">
           <h3>Relational Caution</h3>
-          <p>Rich Gent + Patron reversed + Tower/Fox forms the reading’s clearest relational caution: a younger or polished masculine figure tied to structure, strategy, and uneven exchange.</p>
+          <p>Rich Gent + Patron reversed + Tower/Fox forms the reading's clearest relational caution: a younger or polished masculine figure tied to structure, strategy, and uneven exchange. Watch the terms of that relationship carefully this month.</p>
         </article>
 
         <article class="synthesis-block">
           <h3>The Corridor</h3>
-          <p>At the same time, Sorrows facing Great Fortune and the Lenormand’s Stars + Sun say that pain is not the final state here — it is the corridor toward a better outcome.</p>
+          <p>At the same time, Sorrows facing Great Fortune and the Lenormand's Stars + Sun say that pain is not the final state here — it is the corridor toward a better outcome.</p>
         </article>
 
         <article class="synthesis-block">
@@ -1222,12 +842,13 @@
         </article>
 
         <div class="synthesis-block">
-          <div class="highlight-statement">Naomi’s month is not blocked. It is moving. But it asks her to stop forcing clarity from the outside and start listening for what her inner life already knows.</div>
+          <div class="highlight-statement">Your month is not blocked. It is moving. But it asks you to stop forcing clarity from the outside and start listening for what your inner life already knows.</div>
         </div>
       </div>
     </section>
 
-    <section class="section reveal">
+    <!-- NOTE -->
+    <section class="section">
       <div class="note-card">
         <h2>A Note to You</h2>
         <p>Naomi,</p>
@@ -1239,7 +860,8 @@
       </div>
     </section>
 
-    <section class="section reveal">
+    <!-- SAVE -->
+    <section class="section">
       <div class="save-banner">
         <div>
           <div class="save-label">Save Your Reading</div>
@@ -1249,10 +871,11 @@
         <button class="save-btn" type="button" id="saveShareBtn">Save / Share</button>
       </div>
     </section>
+
   </main>
 
-  <footer class="section reveal">
-    <div class="footer-shell">This reading was prepared just for Naomi · The Citadel Monthly · April 2026 · Prepared by Jaylon</div>
+  <footer class="section">
+    <div class="footer-shell">This reading was prepared just for you, Naomi · The Citadel Monthly · April 2026 · Prepared by Jaylon</div>
   </footer>
 
   <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true">
@@ -1262,93 +885,46 @@
 
   <script>
     (function () {
+      // Starfield
       const starfield = document.getElementById('starfield');
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const count = reduceMotion ? 36 : 72;
-
-      for (let i = 0; i < count; i += 1) {
+      for (let i = 0; i < count; i++) {
         const star = document.createElement('span');
         star.className = 'star';
         const size = Math.random() * 2.2 + 0.6;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.setProperty('--op', (Math.random() * 0.55 + 0.2).toFixed(2));
-        star.style.setProperty('--dur', `${Math.random() * 6 + 4}s`);
-        star.style.animationDelay = `${Math.random() * 8}s`;
+        star.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--op:${(Math.random()*0.55+0.2).toFixed(2)};--dur:${(Math.random()*6+4).toFixed(1)}s;animation-delay:${(Math.random()*8).toFixed(1)}s`;
         starfield.appendChild(star);
       }
 
-      const observer = !reduceMotion && 'IntersectionObserver' in window
-        ? new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
-        : null;
-
-      document.querySelectorAll('.reveal').forEach((el) => {
-        if (observer) observer.observe(el);
-        else el.classList.add('visible');
-      });
-
+      // Zoom
       const overlay = document.getElementById('zoomOverlay');
       const zoomImage = document.getElementById('zoomImage');
-      const zoomables = document.querySelectorAll('.zoomable');
-
       function closeZoom() {
         overlay.classList.remove('active');
         overlay.setAttribute('aria-hidden', 'true');
         zoomImage.src = '';
       }
-
-      zoomables.forEach((item) => {
+      document.querySelectorAll('.zoomable').forEach(item => {
         item.addEventListener('click', () => {
-          const src = item.getAttribute('data-zoom-src') || item.querySelector('img')?.getAttribute('src');
-          const alt = item.querySelector('img')?.getAttribute('alt') || 'Expanded reading image';
+          const src = item.getAttribute('data-zoom-src') || item.querySelector('img')?.src;
+          const alt = item.querySelector('img')?.getAttribute('alt') || '';
           if (!src) return;
-          if (overlay.classList.contains('active') && zoomImage.src.includes(src)) {
-            closeZoom();
-            return;
-          }
           zoomImage.src = src;
           zoomImage.alt = alt;
           overlay.classList.add('active');
           overlay.setAttribute('aria-hidden', 'false');
         });
       });
-
       overlay.addEventListener('click', closeZoom);
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeZoom();
-      });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeZoom(); });
 
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', (event) => {
-          const targetId = anchor.getAttribute('href');
-          const target = document.querySelector(targetId);
-          if (!target) return;
-          event.preventDefault();
-          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-          history.replaceState(null, '', targetId);
-        });
-      });
-
+      // Save/Share
       const saveBtn = document.getElementById('saveShareBtn');
       if (saveBtn) {
         saveBtn.addEventListener('click', async () => {
           if (navigator.share) {
-            try {
-              await navigator.share({
-                title: 'Naomi’s April Citadel Monthly Reading',
-                text: 'The Citadel Monthly · Four Deck Reading · April 2026'
-              });
-              return;
-            } catch (error) {}
+            try { await navigator.share({ title: "Naomi's April Citadel Monthly Reading" }); return; } catch(e) {}
           }
           window.print();
         });
